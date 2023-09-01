@@ -39,7 +39,7 @@ function startQuiz() {
   timeLeft = 60;
   correctAnswers = 0;
   showQuestion(questions[currentQuestionIndex]);
-  startTimer();
+  startTimer(); // Start the timer after showing the first question
 }
 
 function startTimer() {
@@ -88,6 +88,7 @@ function selectOption(selectedOption, correctAnswer) {
 }
 
 function showNextQuestion() {
+  clearInterval(timerInterval); // Clear the timer interval before showing the next question
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion(questions[currentQuestionIndex]);
@@ -102,18 +103,27 @@ function showResults() {
   correctCountElement.textContent = `You got ${correctAnswers} questions right out of ${questions.length}.`;
   correctCountElement.classList.remove("hide");
 
-  viewResultsButton.classList.remove("hide"); // Show the View Past Results button
+  // Store the quiz result in local storage
+  const initials = prompt("Enter your initials:");
+  const score = correctAnswers;
+  const result = { initials, score };
+
+  const pastResults = JSON.parse(localStorage.getItem("pastResults")) || [];
+  pastResults.push(result);
+  localStorage.setItem("pastResults", JSON.stringify(pastResults));
+
+  viewResultsButton.classList.remove("hide"); // Show the Past Results button
 }
 
 function showPastResults() {
-  const scores = JSON.parse(localStorage.getItem("scores")) || [];
+  const pastResults = JSON.parse(localStorage.getItem("pastResults")) || [];
 
   resultsList.innerHTML = "";
-  scores.forEach((score, index) => {
+  pastResults.forEach((result, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${index + 1}. Initials: ${score.initials}, Score: ${
-      score.score
-    }`;
+    listItem.textContent = `${index + 1}. Initials: ${
+      result.initials
+    }, Score: ${result.score}`;
     resultsList.appendChild(listItem);
   });
 
