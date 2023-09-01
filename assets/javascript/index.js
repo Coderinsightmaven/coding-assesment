@@ -27,6 +27,26 @@ const questions = [
     options: ["variable", "var", "let", "const"],
     correctAnswer: "var",
   },
+  {
+    question: "Which Variable is not reassignable further down the tree?",
+    options: ["number", "var", "let", "const"],
+    correctAnswer: "const",
+  },
+  {
+    question: "Which HTML tag is used to create a hyperlink?",
+    options: ["<a>", "<link>", "<hyperlink>", "<url>"],
+    correctAnswer: "<a>",
+  },
+  {
+    question: "What does HTML stand for?",
+    options: [
+      "Hyperlink and Text Markup Language",
+      "Home Tool Markup Language",
+      "Hyper Text Makeup Language",
+      "Hyper Text Markup Language",
+    ],
+    correctAnswer: "Hyper Text Markup Language",
+  },
 ];
 
 function startQuiz() {
