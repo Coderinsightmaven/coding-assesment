@@ -28,7 +28,7 @@ const questions = [
     correctAnswer: "var",
   },
   {
-    question: "Which Variable is not reassignable further down the tree?",
+    question: "Which Variable is not able reassignable?",
     options: ["number", "var", "let", "const"],
     correctAnswer: "const",
   },
