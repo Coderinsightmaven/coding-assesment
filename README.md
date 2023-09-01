@@ -4,10 +4,10 @@ This app takes javascript and uses DOM Minipulation, HTML, and CSS to create an 
 as well as uses localstorage to store and get the results after a user has finished taking the quiz and can see their past results.
 
 ## Github Link : 
-https://github.com/Coderinsightmaven/coding-assesment
+https://github.com/Coderinsightmaven/coding-assessment
 
 ## Github Pages : 
-https://coderinsightmaven.github.io/coding-assesment/
+https://coderinsightmaven.github.io/coding-assessment/
 
 ### Screen Shots
 
