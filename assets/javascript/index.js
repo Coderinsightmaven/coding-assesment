@@ -58,6 +58,9 @@ function startQuiz() {
   currentQuestionIndex = 0;
   timeLeft = 60;
   correctAnswers = 0;
+
+  // Shuffle the questions array before starting the quiz
+  shuffleArray(questions);
   showQuestion(questions[currentQuestionIndex]);
   startTimer(); // Start the timer after showing the first question
 }
@@ -123,8 +126,14 @@ function showResults() {
   correctCountElement.textContent = `You got ${correctAnswers} questions right out of ${questions.length}.`;
   correctCountElement.classList.remove("hide");
 
-  // Store the quiz result in local storage
-  const initials = prompt("Enter your initials:");
+  let initials = "";
+  while (!initials.trim()) {
+    initials = prompt("Enter your initials:");
+    if (!initials.trim()) {
+      alert("Invalid input. Please enter your initials.");
+    }
+  }
+
   const score = correctAnswers;
   const result = { initials, score };
 
@@ -132,7 +141,7 @@ function showResults() {
   pastResults.push(result);
   localStorage.setItem("pastResults", JSON.stringify(pastResults));
 
-  viewResultsButton.classList.remove("hide"); // Show the Past Results button
+  viewResultsButton.classList.remove("hide"); // Show the View Past Results button
 }
 
 function showPastResults() {
@@ -148,4 +157,12 @@ function showPastResults() {
   });
 
   pastResultsSection.classList.remove("hide");
+}
+
+// Function to shuffle an array using Fisher-Yates algorithm
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
