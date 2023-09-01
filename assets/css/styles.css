@@ -26,6 +26,20 @@ body {
   background-color: #0056b3;
 }
 
+.view-results-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-results-btn:hover {
+  background-color: #0056b3;
+}
+
 .question-container {
   margin-bottom: 20px;
 }
@@ -41,17 +55,21 @@ body {
   cursor: pointer;
 }
 
-.next-btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.past-results {
+  margin-top: 20px;
 }
 
-.next-btn:hover {
-  background-color: #0056b3;
+.past-results h2 {
+  margin-bottom: 10px;
+}
+
+.past-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.past-results li {
+  margin-bottom: 5px;
 }
 
 .hide {

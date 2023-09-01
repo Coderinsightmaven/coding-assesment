@@ -10,6 +10,9 @@
     <div class="quiz-container">
       <h1>JavaScript Quiz</h1>
       <button id="start-btn" class="start-btn">Start Quiz</button>
+      <button id="view-results-btn" class="view-results-btn hide">
+        View Past Results
+      </button>
       <div id="question-container" class="question-container hide">
         <p id="question"></p>
         <div id="option-buttons" class="option-buttons">
@@ -22,6 +25,10 @@
       <p id="timer" class="timer"></p>
       <p id="correct-count" class="correct-count hide"></p>
     </div>
+    <section id="past-results" class="past-results hide">
+      <h2>Past Quiz Results</h2>
+      <ul id="results-list"></ul>
+    </section>
     <script src="./assets/javascript/index.js"></script>
   </body>
 </html>

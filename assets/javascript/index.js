@@ -4,6 +4,9 @@ const optionButtons = document.getElementById("option-buttons");
 const timerElement = document.getElementById("timer");
 const correctCountElement = document.getElementById("correct-count");
 const startButton = document.getElementById("start-btn");
+const viewResultsButton = document.getElementById("view-results-btn");
+const pastResultsSection = document.getElementById("past-results");
+const resultsList = document.getElementById("results-list");
 
 let currentQuestionIndex = 0;
 let timeLeft = 60;
@@ -11,6 +14,7 @@ let correctAnswers = 0;
 let timerInterval;
 
 startButton.addEventListener("click", startQuiz);
+viewResultsButton.addEventListener("click", showPastResults);
 
 const questions = [
   {
@@ -27,6 +31,7 @@ const questions = [
 
 function startQuiz() {
   startButton.classList.add("hide");
+  viewResultsButton.classList.add("hide");
   questionContainer.classList.remove("hide");
   correctCountElement.classList.add("hide");
   startButton.disabled = true;
@@ -97,20 +102,20 @@ function showResults() {
   correctCountElement.textContent = `You got ${correctAnswers} questions right out of ${questions.length}.`;
   correctCountElement.classList.remove("hide");
 
-  // Prompt user for initials and save score
-  const initials = prompt("Enter your initials:");
-  if (initials) {
-    saveScore(initials, correctAnswers);
-  }
+  viewResultsButton.classList.remove("hide"); // Show the View Past Results button
 }
 
-function saveScore(initials, score) {
-  // Retrieve existing scores or initialize an empty array
+function showPastResults() {
   const scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-  // Add the new score to the array
-  scores.push({ initials, score });
+  resultsList.innerHTML = "";
+  scores.forEach((score, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${index + 1}. Initials: ${score.initials}, Score: ${
+      score.score
+    }`;
+    resultsList.appendChild(listItem);
+  });
 
-  // Save the updated scores to local storage
-  localStorage.setItem("scores", JSON.stringify(scores));
+  pastResultsSection.classList.remove("hide");
 }
