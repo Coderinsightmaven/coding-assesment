@@ -3,11 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/globals.css" />
-    9
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <title>Coding Quiz</title>
   </head>
   <body>
-    <script href="./assets/javascript/index.js"></script>
+    <div class="quiz-container">
+      <h1>JavaScript Quiz</h1>
+      <button id="start-btn" class="start-btn">Start Quiz</button>
+      <div id="question-container" class="question-container hide">
+        <p id="question"></p>
+        <div id="option-buttons" class="option-buttons">
+          <button class="option-btn"></button>
+          <button class="option-btn"></button>
+          <button class="option-btn"></button>
+          <button class="option-btn"></button>
+        </div>
+      </div>
+      <p id="timer" class="timer"></p>
+      <p id="correct-count" class="correct-count hide"></p>
+    </div>
+    <script src="./assets/javascript/index.js"></script>
   </body>
 </html>
