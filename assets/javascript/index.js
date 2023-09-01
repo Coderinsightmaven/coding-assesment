@@ -72,6 +72,11 @@ function selectOption(selectedOption, correctAnswer) {
 
   if (selectedOption === correctAnswer) {
     correctAnswers++;
+  } else {
+    timeLeft -= 10; // Subtract 10 seconds for incorrect answers
+    if (timeLeft < 0) {
+      timeLeft = 0;
+    }
   }
 
   showNextQuestion();
@@ -91,4 +96,21 @@ function showNextQuestion() {
 function showResults() {
   correctCountElement.textContent = `You got ${correctAnswers} questions right out of ${questions.length}.`;
   correctCountElement.classList.remove("hide");
+
+  // Prompt user for initials and save score
+  const initials = prompt("Enter your initials:");
+  if (initials) {
+    saveScore(initials, correctAnswers);
+  }
+}
+
+function saveScore(initials, score) {
+  // Retrieve existing scores or initialize an empty array
+  const scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+  // Add the new score to the array
+  scores.push({ initials, score });
+
+  // Save the updated scores to local storage
+  localStorage.setItem("scores", JSON.stringify(scores));
 }
